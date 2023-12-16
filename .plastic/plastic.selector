@@ -1,0 +1,4 @@
+repository "HideAndShot@Kalremin@cloud"
+  path "/"
+    br "/main"
+    co "/main"
