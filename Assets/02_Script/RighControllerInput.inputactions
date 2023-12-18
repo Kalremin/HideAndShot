@@ -1,0 +1,46 @@
+{
+    "name": "RighControllerInput",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "cdf07209-c8d0-4de1-bf9b-33897956800f",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "25739c4f-87f6-4781-8ae8-91c160f88f81",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "721777e3-7b56-4ccf-a8d3-0409a916f940",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Test",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Test",
+            "bindingGroup": "Test",
+            "devices": [
+                {
+                    "devicePath": "<XRController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

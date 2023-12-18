@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 144778414}
   - component: {fileID: 144778413}
   - component: {fileID: 144778412}
-  - component: {fileID: 144778415}
+  - component: {fileID: 144778416}
   m_Layer: 0
   m_Name: Locomotion System
   m_TagString: Untagged
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Timeout: 10
   m_XROrigin: {fileID: 0}
---- !u!114 &144778415
+--- !u!114 &144778416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,42 +239,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 144778410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf296fc962d7184ab14ad1841598d5f, type: 3}
+  m_Script: {fileID: 11500000, guid: f9257f581191f144eadbaa8e25d178a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_System: {fileID: 0}
-  m_MoveSpeed: 1
-  m_EnableStrafe: 1
-  m_EnableFly: 0
-  m_UseGravity: 1
-  m_GravityApplicationMode: 0
-  m_ForwardSource: {fileID: 779588530}
-  m_LeftHandMoveAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Left Hand Move
-      m_Type: 0
-      m_ExpectedControlType: Vector2
-      m_Id: 75f1b245-c357-48c8-9acb-8967bec9dda2
-      m_Processors: 
+  stickMoveAction:
+    m_Name: Stick Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e045eb8a-7dfa-4c88-838c-9e3820456018
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 14ea4a7b-0d0c-4a35-aa40-f4d457984073
+      m_Path: <XRController>{LeftHand}/{Primary2DAxis}
       m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
-  m_RightHandMoveAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Right Hand Move
-      m_Type: 0
-      m_ExpectedControlType: Vector2
-      m_Id: 6bf6c732-e011-46b1-acc5-b649a4ec5f10
       m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
+      m_Groups: 
+      m_Action: Stick Move
       m_Flags: 0
-    m_Reference: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
+    m_Flags: 0
+  hideBtnAction:
+    m_Name: Hide Btn
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 4fc1a4b6-8a18-4967-a1ec-fee9ad00ddfb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d50bba1b-f401-4030-b444-10df9a5e6bec
+      m_Path: <XRController>{RightHand}/{PrimaryButton}
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Hide Btn
+      m_Flags: 0
+    m_Flags: 0
+  playerCam: {fileID: 1969909946}
+  camOffset: {fileID: 1897561987}
+  upPoint: {fileID: 1378085185}
+  downPoint: {fileID: 1552451463}
+  camMoveSpeed: 5
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,8 +751,8 @@ Transform:
   m_GameObject: {fileID: 445086758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 3.78, z: -0.99800026}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 3.78, z: -0.5991}
+  m_LocalScale: {x: 1, y: 1, z: 0.2023}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 749032102}
@@ -1483,8 +1489,8 @@ Transform:
   m_GameObject: {fileID: 760527848}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.016, y: 3.78, z: 1.078}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.016, y: 3.78, z: 0.6805}
+  m_LocalScale: {x: 1, y: 1, z: 0.2051}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 749032102}
@@ -1626,6 +1632,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 144778411}
+  - {fileID: 1378085185}
+  - {fileID: 1552451463}
   - {fileID: 1897561987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1668,7 +1676,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &779588533
 CapsuleCollider:
@@ -2651,8 +2659,8 @@ Transform:
   m_GameObject: {fileID: 1090197481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.04, y: 0.06, z: 3.57}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalPosition: {x: -0.08, y: 0.06, z: 2.11}
+  m_LocalScale: {x: 1, y: 0.1, z: 3.0514}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 667047374}
@@ -3162,6 +3170,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298102650}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1378085184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378085185}
+  m_Layer: 0
+  m_Name: UpPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1378085185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378085184}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.1176, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 779588530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1462690749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,6 +3558,37 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   activeInteractor: {fileID: 1974602414}
+--- !u!1 &1552451462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552451463}
+  m_Layer: 0
+  m_Name: DownPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552451463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552451462}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1176, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 779588530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1897561986
 GameObject:
   m_ObjectHideFlags: 0
